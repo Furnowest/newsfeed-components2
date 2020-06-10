@@ -113,4 +113,49 @@ const data = [
 */
  // just a comment 
 
+ function articleComponent(title, date,firstParagraph,secondParagraph,thirdParagraph){
+  const article =document.createElement("div");
+  const titleh =document.createElement("h2");
+  const firstPara =document.createElement("p");
+  const secondPara =document.createElement("p");
+  const thirdPara =document.createElement("p");
+  const fourthPara =document.createElement("p");
+  const artSpan =document.createElement("span");
+
+  article.appendChild(titleh);
+  article.appendChild(firstPara);
+  article.appendChild(secondPara);
+  article.appendChild(thirdPara);
+  article.appendChild(fourthPara);
+  article.appendChild(artSpan);
+
+  // titleh.classList.add(title);
+  article.classList.add("article");
+  firstPara.classList.add("date");
+  artSpan.classList.add("expandButton");
+  
+
+  
+  titleh.textContent = title;
+  firstPara.textContent = date;
+  secondPara.textContent = firstParagraph;
+  thirdPara.textContent = secondParagraph;
+  fourthPara.textContent = thirdParagraph;
+  artSpan.textContent = '\u25bc';
  
+
+  artSpan.addEventListener("click", () => {
+    article.classList.toggle("article-open")
+
+  })
+
+  return article;
+  
+
+  }
+  const articles =document.querySelector(".articles");
+
+data.forEach((dataObject) =>{
+  const dataComponent = articleComponent(dataObject.title, dataObject.date,dataObject.firstParagraph,dataObject.secondParagraph,dataObject.thirdParagraph);
+  articles.appendChild(dataComponent);
+})
